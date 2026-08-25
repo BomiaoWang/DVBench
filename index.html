@@ -55,7 +55,36 @@
 
     <section id="results">
       <h2>Main Results</h2>
-      <figure><img src="assets/main-results.png" alt="Main DVBench evaluation results"></figure>
+      <div class="results-table-wrap" role="region" aria-label="DVBench main results" tabindex="0">
+        <table class="results-table">
+          <thead>
+            <tr>
+              <th rowspan="2">Model</th>
+              <th colspan="5">Closed-ended Dimensions</th>
+              <th colspan="6">Alignment</th>
+            </tr>
+            <tr>
+              <th>Avg.</th><th>Narr.</th><th>Anim.</th><th>Perc.</th><th>Reas.</th>
+              <th>BL-2</th><th>MET</th><th>BERT F1</th><th>EMS</th><th>EMS<sub>ref</sub></th><th>Human Eval.</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="human"><th>Human</th><td>91.93</td><td>87.14</td><td>90.74</td><td>95.31</td><td>94.52</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+            <tr class="group"><th colspan="12">Proprietary Models</th></tr>
+            <tr><th>Gemini-3.1-Pro</th><td><strong>77.91</strong></td><td><strong>76.57</strong></td><td><u>69.92</u></td><td><strong>86.16</strong></td><td><strong>77.87</strong></td><td><strong>26.77</strong></td><td>38.20</td><td>83.02</td><td>26.49</td><td><u>54.83</u></td><td><u>3.95</u></td></tr>
+            <tr><th>Claude-4.6-Sonnet</th><td>72.51</td><td><u>75.43</u></td><td>68.42</td><td>74.84</td><td>71.58</td><td><u>25.81</u></td><td><u>38.26</u></td><td><strong>83.28</strong></td><td><u>27.17</u></td><td>54.55</td><td>3.89</td></tr>
+            <tr><th>GPT-5.4</th><td>65.31</td><td>69.14</td><td>63.91</td><td>68.55</td><td>62.57</td><td>19.88</td><td>31.68</td><td>77.67</td><td>26.55</td><td>52.93</td><td>3.71</td></tr>
+            <tr class="group"><th colspan="12">Open-source Models</th></tr>
+            <tr><th>Kimi-k2.5</th><td><u>75.87</u></td><td>72.57</td><td><strong>72.18</strong></td><td><u>83.65</u></td><td><u>75.41</u></td><td>25.77</td><td><strong>41.22</strong></td><td><u>83.09</u></td><td><strong>27.48</strong></td><td><strong>54.89</strong></td><td><strong>3.97</strong></td></tr>
+            <tr><th>Qwen3.5-27B</th><td>62.30</td><td>74.29</td><td>59.40</td><td>64.15</td><td>56.83</td><td>17.81</td><td>27.57</td><td>79.21</td><td>26.25</td><td>52.73</td><td>3.48</td></tr>
+            <tr><th>Qwen3.5-397B-A17B</th><td>61.82</td><td>73.14</td><td>62.41</td><td>64.78</td><td>54.92</td><td>16.94</td><td>26.18</td><td>76.77</td><td>25.89</td><td>52.52</td><td>3.25</td></tr>
+            <tr><th>Qwen3.5-122B-A10B</th><td>59.30</td><td>70.86</td><td>58.65</td><td>62.26</td><td>52.73</td><td>12.96</td><td>21.74</td><td>77.61</td><td>25.78</td><td>51.96</td><td>3.00</td></tr>
+            <tr><th>Gemma-4-31B-It</th><td>58.82</td><td>64.00</td><td>57.89</td><td>60.38</td><td>56.01</td><td>16.53</td><td>25.75</td><td>78.18</td><td>26.26</td><td>52.65</td><td>2.95</td></tr>
+            <tr><th>Qwen3.5-9B</th><td>52.82</td><td>55.43</td><td>54.89</td><td>61.01</td><td>47.27</td><td>8.20</td><td>16.07</td><td>73.98</td><td>25.45</td><td>50.41</td><td>2.73</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">The four closed-ended dimensions are evaluated by accuracy. Alignment reports BLEU-2, METEOR, BERTScore F1, EMScore, EMScore-ref, and five-point human evaluation. Bold and underlined values denote the best and second-best MLLM results, respectively.</p>
       <div class="findings">
         <article><strong>Proprietary models lead overall</strong><span>Proprietary models generally perform best, while Kimi K2.5 is a notable exception: it reaches the second-highest average accuracy of 75.87% and surpasses Claude Sonnet 4.6 and GPT-5.4.</span></article>
         <article><strong>Model size does not determine performance</strong><span>Within the Qwen3.5 family, the smaller dense 27B model outperforms the larger mixture-of-experts variants in average accuracy and Alignment.</span></article>
