@@ -29,7 +29,7 @@ a:hover { text-decoration: underline; }
     linear-gradient(180deg, #fafaff 0%, #fff 100%);
   border-bottom: 1px solid var(--line);
 }
-.venue { margin: 0 0 10px; color: var(--accent); font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
+.venue { margin: 16px 0 0; color: var(--accent); font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
 h1 { max-width: 1000px; margin: 0 auto; font-size: clamp(1.1rem, 2.2vw, 1.8rem); font-weight: 700; line-height: 1.35; letter-spacing: -.01em; }
 .authors { margin: 22px 0 5px; font-size: 1.08rem; }
 .affiliations, .notes { margin: 4px 0; color: var(--muted); font-size: .94rem; }
