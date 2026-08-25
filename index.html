@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="DVBench evaluates multimodal large language models on dynamic charts and narratives in data videos.">
+  <title>DVBench</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <p class="venue">Findings of EMNLP 2026</p>
+      <h1>DVBench</h1>
+      <p class="subtitle">Benchmarking MLLMs for Understanding Dynamic Charts and Narratives in Data Videos</p>
+      <p class="authors">
+        <strong>Bomiao Wang<sup>*</sup></strong>, <strong>Zekai Shao<sup>*</sup></strong>, Jiexiang Lan, Xiaoliang Fu,<br>
+        Xingchen Zeng, Siming Chen<sup>†</sup>
+      </p>
+      <p class="affiliations"><sup>1</sup>Fudan University &nbsp;·&nbsp; <sup>2</sup>The Hong Kong University of Science and Technology (Guangzhou)</p>
+      <p class="notes"><sup>*</sup>Equal contribution &nbsp; <sup>†</sup>Corresponding author</p>
+      <nav class="actions" aria-label="Project links">
+        <a href="#">Paper</a>
+        <a href="https://github.com/BomiaoWang/DVBench">GitHub</a>
+        <a href="https://huggingface.co/datasets/BomiaoWang/DVBench">Hugging Face Dataset</a>
+      </nav>
+      <div class="metrics" aria-label="Dataset summary">
+        <div><strong>300</strong><span>Data videos</span></div>
+        <div><strong>1,000</strong><span>Verified QA pairs</span></div>
+        <div><strong>5</strong><span>Dimensions</span></div>
+        <div><strong>9</strong><span>Evaluated MLLMs</span></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="abstract">
+      <h2>Abstract</h2>
+      <p>While MLLMs have made significant strides in chart comprehension and video understanding, current evaluations largely isolate these capabilities, leaving a critical gap in understanding temporally evolving structured visual information. We introduce <strong>DVBench</strong>, a benchmark for evaluating MLLMs on data videos—a storytelling medium that integrates dynamic charts with structured narratives. DVBench contains 300 real-world data videos and 1,000 human-verified QA pairs curated through a rigorous semi-automated pipeline. Evaluations of nine MLLMs show that Gemini 3.1 Pro achieves the best overall performance, while Kimi K2.5 is the strongest model in the paper's open-source grouping.</p>
+      <figure><img src="assets/dvbench-tasks.png" alt="The five DVBench evaluation dimensions"></figure>
+      <div class="dimensions">
+        <article><h3>Narrative</h3><p>High-level storytelling logic, topic, intent, and communicative stance.</p></article>
+        <article><h3>Animation</h3><p>Dynamic transitions across visual elements, annotations, camera, and pacing.</p></article>
+        <article><h3>Chart Perception</h3><p>Direct reading of titles, axes, legends, ticks, labels, and values.</p></article>
+        <article><h3>Chart Reasoning</h3><p>Higher-level insights inferred across visual elements and video frames.</p></article>
+        <article><h3>Alignment</h3><p>Reconstruction of masked narration from visual evidence and subtitle context.</p></article>
+      </div>
+    </section>
+
+    <section id="construction">
+      <h2>Benchmark Construction</h2>
+      <figure><img src="assets/benchmark-construction.png" alt="DVBench construction pipeline"></figure>
+      <p>The benchmark is constructed in three stages: video collection, dimension-specific QA candidate generation, and expert curation. Narrative candidates are generated and filtered with MLLMs; Animation and Chart Perception questions target transitions and explicit graphical elements; Chart Reasoning combines visual and subtitle-derived facts; and Alignment is formulated as a subtitle-cloze task.</p>
+    </section>
+
+    <section id="statistics">
+      <h2>Dataset Statistics</h2>
+      <figure><img src="assets/dataset-statistics.png" alt="DVBench dataset statistics"></figure>
+      <p>The 1,000 questions span five dimensions, diverse chart types, video lengths from under 30 seconds to about 37 minutes, and ten real-world topic groups. Chart Reasoning is the largest dimension, reflecting the cross-frame reasoning demands of data videos.</p>
+    </section>
+
+    <section id="results">
+      <h2>Main Results</h2>
+      <figure><img src="assets/main-results.png" alt="Main DVBench evaluation results"></figure>
+      <div class="findings">
+        <article><strong>Proprietary models lead overall</strong><span>Proprietary models generally perform best, while Kimi K2.5 is a notable exception: it reaches the second-highest average accuracy of 75.87% and surpasses Claude Sonnet 4.6 and GPT-5.4.</span></article>
+        <article><strong>Model size does not determine performance</strong><span>Within the Qwen3.5 family, the smaller dense 27B model outperforms the larger mixture-of-experts variants in average accuracy and Alignment.</span></article>
+        <article><strong>Narrative and visual skills diverge</strong><span>Open-source models approach proprietary systems in macro-level narrative understanding, yet remain substantially weaker in fine-grained Animation and Chart Reasoning.</span></article>
+      </div>
+    </section>
+
+    <section id="analysis">
+      <h2>Fine-grained Analysis</h2>
+      <div class="analysis-grid">
+        <article>
+          <span class="analysis-label">Animation</span>
+          <h3>Failure to Capture Non-linear Animation Pacing</h3>
+          <p>The Timeline layer is particularly challenging, with nearly all models below 37.50% accuracy. Current MLLMs struggle to perceive how animation pace changes over time, including acceleration and deceleration.</p>
+        </article>
+        <article>
+          <span class="analysis-label">Chart Reasoning</span>
+          <h3>Dynamic Charts Induce Counting Hallucinations</h3>
+          <p>Aggregation is among the hardest reasoning categories. Several open-source models achieve only around 40% accuracy when counting condition-matching elements across dynamic charts and multiple frames.</p>
+        </article>
+        <article>
+          <span class="analysis-label">Alignment</span>
+          <h3>Insight and Context Grounding Diverge</h3>
+          <p>Proprietary models and Kimi K2.5 generally ground Data Insight better than Data Context, while other open-source models drop more sharply on Data Insight. The gap is driven mainly by visual-text grounding errors rather than phrasing differences.</p>
+        </article>
+        <article>
+          <span class="analysis-label">Video Length</span>
+          <h3>Strong Models Remain Robust on Long Videos</h3>
+          <p>Leading proprietary models and Kimi K2.5 remain stable beyond six minutes, whereas weaker models decline almost linearly. Narrative understanding stays comparatively stable, but fine-grained visual tasks often fall below 50%.</p>
+        </article>
+        <article>
+          <span class="analysis-label">Frame Ablation</span>
+          <h3>More Frames Do Not Necessarily Help</h3>
+          <p>Performance does not improve monotonically with denser sampling. Across all tested Qwen3.5 models, 2 fps underperforms 0.5 and 1 fps, showing that additional frames do not necessarily provide more useful evidence.</p>
+        </article>
+        <article>
+          <span class="analysis-label">Subtitle Ablation</span>
+          <h3>Subtitles Primarily Benefit Semantic Understanding</h3>
+          <p>Subtitles improve every model on average, with gains concentrated in Narrative and Chart Reasoning. For Qwen3.5 and Gemma, Chart Reasoning improves by 7.92–11.47 points, while visual-perception gains are smaller and less consistent.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="citation">
+      <h2>Citation</h2>
+      <p>If you find DVBench useful for your research, please cite our work.</p>
+      <div class="citation-box">
+        <button id="copy-citation" type="button">Copy BibTeX</button>
+        <pre><code id="bibtex">@inproceedings{wang2026dvbench,
+  title={DVBench: Benchmarking MLLMs for Understanding Dynamic Charts and Narratives in Data Videos},
+  author={Wang, Bomiao and Shao, Zekai and Lan, Jiexiang and Fu, Xiaoliang and Zeng, Xingchen and Chen, Siming},
+  booktitle={Findings of the Association for Computational Linguistics: EMNLP 2026},
+  year={2026}
+}</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">DVBench · <a href="LICENSE">Apache-2.0 code</a> · <a href="DATA_LICENSE.md">CC BY-NC-SA 4.0 annotations</a></div>
+  </footer>
+  <script>
+    document.getElementById('copy-citation').addEventListener('click', async function () {
+      await navigator.clipboard.writeText(document.getElementById('bibtex').textContent);
+      this.textContent = 'Copied';
+      setTimeout(() => { this.textContent = 'Copy BibTeX'; }, 1600);
+    });
+  </script>
+</body>
+</html>
