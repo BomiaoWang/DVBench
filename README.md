@@ -38,7 +38,7 @@ source .venv/bin/activate
 python -m pip install -e ".[eval,providers]"
 ```
 
-Place legally obtained videos in `data/videos/<video_id>.mp4`. GPT-5.4 and Claude Sonnet 4.6 also require `ffmpeg` and `ffprobe` on `PATH` for deterministic frame sampling.
+Place videos in `data/videos/<video_id>.mp4`.
 
 Set the API key for the provider you want to run:
 
