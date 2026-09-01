@@ -1,6 +1,6 @@
 # DVBench: Benchmarking MLLMs for Understanding Dynamic Charts and Narratives in Data Videos
 
-[![Paper](https://img.shields.io/badge/Findings%20of%20EMNLP-2026-blue)](https://arxiv.org/abs/2608.29711)
+[![Paper](https://img.shields.io/badge/Findings%20of%20EMNLP-2026-blue)](paper.pdf)
 [![Code license](https://img.shields.io/badge/code-Apache--2.0-green)](LICENSE)
 [![Data license](https://img.shields.io/badge/annotations-CC%20BY--NC--SA%204.0-lightgrey)](DATA_LICENSE.md)
 
