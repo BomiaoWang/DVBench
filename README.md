@@ -1,6 +1,6 @@
 # DVBench: Benchmarking MLLMs for Understanding Dynamic Charts and Narratives in Data Videos
 
-[![Paper](https://img.shields.io/badge/Findings%20of%20EMNLP-2026-blue)](#main-results)
+[![Paper](https://img.shields.io/badge/Findings%20of%20EMNLP-2026-blue)](https://arxiv.org/abs/2608.29711)
 [![Code license](https://img.shields.io/badge/code-Apache--2.0-green)](LICENSE)
 [![Data license](https://img.shields.io/badge/annotations-CC%20BY--NC--SA%204.0-lightgrey)](DATA_LICENSE.md)
 
@@ -71,10 +71,13 @@ dvbench-evaluate predictions.jsonl \
 If you find our work helpful for your research, please consider citing our work.
 
 ```bibtex
-@inproceedings{wang2026dvbench,
+@misc{wang2026dvbench,
   title={DVBench: Benchmarking MLLMs for Understanding Dynamic Charts and Narratives in Data Videos},
   author={Wang, Bomiao and Shao, Zekai and Lan, Jiexiang and Fu, Xiaoliang and Zeng, Xingchen and Chen, Siming},
-  booktitle={Findings of the Association for Computational Linguistics: EMNLP 2026},
-  year={2026}
+  year={2026},
+  eprint={2608.29711},
+  archivePrefix={arXiv},
+  primaryClass={cs.CL},
+  url={https://arxiv.org/abs/2608.29711}
 }
 ```
