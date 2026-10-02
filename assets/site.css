@@ -36,8 +36,7 @@ h1 { max-width: 1000px; margin: 0 auto; font-size: clamp(1.1rem, 2.2vw, 1.9rem);
 .authors a:hover { color: var(--accent); }
 .affiliations, .notes { margin: 4px 0; color: var(--muted); font-size: .94rem; }
 .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: 28px 0 34px; }
-.actions a { padding: 9px 20px; border: 1px solid var(--accent); border-radius: 999px; color: var(--accent-dark); font-weight: 700; }
-.actions a:first-child { color: #fff; background: var(--accent); }
+.actions a { padding: 9px 20px; border: 1px solid var(--accent); border-radius: 999px; color: #fff; background: var(--accent); font-weight: 700; }
 .dimensions article, .findings article { padding: 20px; border: 1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,.82); box-shadow: 0 8px 26px rgba(30,44,82,.06); }
 main { padding: 18px 0 70px; }
 section { padding: 58px 0; border-bottom: 1px solid var(--line); }
